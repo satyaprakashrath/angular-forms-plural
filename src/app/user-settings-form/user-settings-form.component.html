@@ -4,10 +4,15 @@
     <div class="form-group">
       <label for="name">Name</label>
       <input id="name" name="name" class="form-control" [(ngModel)]="userSettings.name" required
-      #classTest/>
+      #propertyTest="ngModel"/>
     </div>
 
-    <h3>{{classTest.className}}</h3>
+    <h3>{{propertyTest.touched}}</h3>
+    <h3>{{propertyTest.untouched}}</h3>
+    <h3>{{propertyTest.dirty}}</h3>
+    <h3>{{propertyTest.pristine}}</h3>
+    <h3>{{propertyTest.valid}}</h3>
+    <h3>{{propertyTest.invalid}}</h3>
 
     <div class="form-check form-group">
       <input class="form-check-input" type="checkbox" value="" id="emailOffers" name="emailOffers" [(ngModel)]="userSettings.emailOffers"/>

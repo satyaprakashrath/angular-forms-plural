@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { DataService } from '../data/data.service';
 import { UserSettings } from '../data/user-settings';
 
@@ -19,6 +20,7 @@ export class UserSettingsFormComponent implements OnInit {
   };
   error = false;
   postErrorMessage = '';
+  subscriptionTypes : Observable<string[]>
 
   userSettings: UserSettings = { ...this.originalUserSettings };
 
@@ -27,6 +29,7 @@ export class UserSettingsFormComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.originalUserSettings);
     console.log('copied data', this.userSettings);
+    this.subscriptionTypes = this.dataService.getSubscriptionTypes();
   }
 
   onHttpError(error) {

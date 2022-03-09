@@ -6,33 +6,48 @@ import { UserSettings } from '../data/user-settings';
 @Component({
   selector: 'ps-user-settings-form',
   templateUrl: './user-settings-form.component.html',
-  styleUrls: ['./user-settings-form.component.css']
+  styleUrls: ['./user-settings-form.component.css'],
 })
 export class UserSettingsFormComponent implements OnInit {
+  originalUserSettings: UserSettings = {
+    name: null,
+    emailOffers: null,
+    interfaceStyle: null,
+    notes: null,
+    subscriptionStyle: null,
+    id: null,
+  };
+  error = false;
+  postErrorMessage = '';
 
-   originalUserSettings : UserSettings = {
-     name : null ,
-     emailOffers : null,
-     interfaceStyle : null,
-     notes : null,
-     subscriptionStyle : null
-  }
+  userSettings: UserSettings = { ...this.originalUserSettings };
 
-  userSettings : UserSettings = {... this.originalUserSettings}
-
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    console.log(this.originalUserSettings)
-    console.log('copied data', this.userSettings)
+    console.log(this.originalUserSettings);
+    console.log('copied data', this.userSettings);
   }
 
-  onSubmit(form : NgForm){
-    console.log("in onSubmit:", form.valid);
-    this.dataService.postUserSettingsForm(this.userSettings).subscribe(
-      result => console.log("success: ", result),
-      error => console.log("error: ", error)
-    )
+  onHttpError(error) {
+    console.log('error: ', error);
+    this.error = true;
+    this.postErrorMessage = error.error.errorMessage;
   }
 
+  onSubmit(form: NgForm) {
+    console.log('in onSubmit:', form.valid);
+    if (form.valid) {
+      this.dataService.postUserSettingsForm(this.userSettings).subscribe(
+        result => {
+          console.log('success: ', result);
+          this.error = false;
+        },
+        (error) => this.onHttpError(error)
+      );
+    } else {
+      this.error = true;
+      this.postErrorMessage = 'Fix the above error';
+    }
+  }
 }

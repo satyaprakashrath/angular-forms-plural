@@ -3,5 +3,6 @@ export interface UserSettings {
   emailOffers : boolean,
   interfaceStyle : string,
   subscriptionStyle : string,
-  notes : string
+  notes : string,
+  id: string
 };

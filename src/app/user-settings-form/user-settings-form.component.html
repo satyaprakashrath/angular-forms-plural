@@ -10,11 +10,14 @@
       Enter a name
     </div>
 
-    <button type="button" class="btn btn-primary" name="singleModel" [(ngModel)]="singleModel" btnCheckbox btnCheckboxTrue="On"
-      btnCheckboxFalse="Off">
-      {{singleModel}}
-    </button>
+    <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+      <input type="text"
+             placeholder="Datepicker" [(ngModel)]="startDate" name="startDate"
+             class="form-control"
+             bsDatepicker>
+    </div>
 
+    {{startDate}}
     <div class="form-check form-group">
       <input class="form-check-input" type="checkbox" value="" id="emailOffers" name="emailOffers"
         [(ngModel)]="userSettings.emailOffers" />

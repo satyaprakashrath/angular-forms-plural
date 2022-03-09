@@ -22,6 +22,7 @@ export class UserSettingsFormComponent implements OnInit {
   postErrorMessage = '';
   subscriptionTypes : Observable<string[]>;
   singleModel = 'On';
+  startDate = new Date();
 
   userSettings: UserSettings = { ...this.originalUserSettings };
 

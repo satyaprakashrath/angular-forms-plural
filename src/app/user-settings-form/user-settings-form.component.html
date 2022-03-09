@@ -16,8 +16,10 @@
              class="form-control"
              bsDaterangepicker>
     </div>
-
     {{startDate}}
+    <timepicker [(ngModel)]="startTime" name="startTime" id="startTime"></timepicker>
+    {{startTime}}
+
     <div class="form-check form-group">
       <input class="form-check-input" type="checkbox" value="" id="emailOffers" name="emailOffers"
         [(ngModel)]="userSettings.emailOffers" />

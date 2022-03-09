@@ -20,7 +20,8 @@ export class UserSettingsFormComponent implements OnInit {
   };
   error = false;
   postErrorMessage = '';
-  subscriptionTypes : Observable<string[]>
+  subscriptionTypes : Observable<string[]>;
+  singleModel = 'On';
 
   userSettings: UserSettings = { ...this.originalUserSettings };
 

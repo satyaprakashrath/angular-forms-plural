@@ -19,7 +19,13 @@
     {{startDate}}
     <timepicker [(ngModel)]="startTime" name="startTime" id="startTime"></timepicker>
     {{startTime}}
-
+    <div>
+      <label for="rating"> Rating</label>
+      <div>
+      <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly" name="rate" id="rate"></rating>
+    </div>
+  </div>
+    {{rate}}
     <div class="form-check form-group">
       <input class="form-check-input" type="checkbox" value="" id="emailOffers" name="emailOffers"
         [(ngModel)]="userSettings.emailOffers" />

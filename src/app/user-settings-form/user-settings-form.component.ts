@@ -24,6 +24,9 @@ export class UserSettingsFormComponent implements OnInit {
   singleModel = 'On';
   startDate = new Date();
   startTime = new Date();
+  rate = 0;
+  max = 10;
+  isReadonly = false;
 
   userSettings: UserSettings = { ...this.originalUserSettings };
 
